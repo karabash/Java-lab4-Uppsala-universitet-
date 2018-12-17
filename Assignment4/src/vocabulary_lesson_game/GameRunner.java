@@ -43,7 +43,7 @@ public class GameRunner {
 	 *
 	 */
 	private class ControllerOfGame{
-		private	Scanner input = new Scanner(System.in);
+		private Scanner input = new Scanner(System.in);
 
 		/**
 		 * The checkAGuessTotalyCorrect() method checks user guess is correct or not.
@@ -74,6 +74,7 @@ public class GameRunner {
 		private final void startGuessing() {
 			listOfValues.addAll(0, swedishVocabulary.values());
 			int wrongAns=0, correctAns=0;
+			int totalQuestions;
 			String userInput = null;
 
 			System.out.println("Enter your name");
@@ -86,9 +87,15 @@ public class GameRunner {
 				System.out.print(words+" :");
 				userInput =  input.next().toLowerCase();
 
-				if(	userInput.substring(0).equalsIgnoreCase("q") | correctAns+wrongAns==9) {
+				if(userInput.substring(0).equalsIgnoreCase("q") | correctAns+wrongAns==9) {
+					if(correctAns==9){
+						++correctAns;
+						System.out.print("Korrekt! " + correctAns   + " rätt " +" av " + (correctAns+ wrongAns) +" ord\n" );
+					}
 					// I've added +1 bc list of size 9 and total questions are 10
-					System.out.print("Du svarade på total "+  (wrongAns+correctAns+1) + " glosor "+gamer.getName() +" och hade " + correctAns +" rätt välkomen åter" );
+					totalQuestions = wrongAns+correctAns+1;
+					System.out.print("Du svarade på total "+  (totalQuestions>10 ? totalQuestions=10 : totalQuestions) 
+							+ " glosor "+gamer.getName() +" och hade " + correctAns +" rätt välkomen åter" );
 					break stop;
 				}
 				else if(this.checkAGuessTotalyCorrect(userInput)) {
