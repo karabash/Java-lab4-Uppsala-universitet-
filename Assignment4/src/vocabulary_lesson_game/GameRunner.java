@@ -21,13 +21,13 @@ public class GameRunner {
 		swedishVocabulary.put(SwedishVocabulary.BIL, "car"); 
 		swedishVocabulary.put(SwedishVocabulary.HUS, "house"); 
 		swedishVocabulary.put(SwedishVocabulary.SPRINGA, "run");
-		swedishVocabulary.put(SwedishVocabulary.BLÅ, "blue"); 
+		swedishVocabulary.put(SwedishVocabulary.BLÃ…, "blue"); 
 		swedishVocabulary.put(SwedishVocabulary.BAKA, "bake"); 
 		swedishVocabulary.put(SwedishVocabulary.HOPPA, "jump"); 
 		swedishVocabulary.put(SwedishVocabulary.SIMMA, "swim"); 
-		swedishVocabulary.put(SwedishVocabulary.MÅNE, "moon");
-		swedishVocabulary.put(SwedishVocabulary.VÄG, "road"); 
-		swedishVocabulary.put(SwedishVocabulary.SNÄLL, "kind"); 
+		swedishVocabulary.put(SwedishVocabulary.MÃ…NE, "moon");
+		swedishVocabulary.put(SwedishVocabulary.VÃ„G, "road"); 
+		swedishVocabulary.put(SwedishVocabulary.SNÃ„LL, "kind"); 
 	}
 
 	public static void main(String args[]) {
@@ -54,7 +54,7 @@ public class GameRunner {
 		 * and return type boolean helps to increase count of a correct guess
 		 * or wrong guess. 
 		 */
-		public boolean checkAGuessTotalyCorrect(String userInput) {
+		private final boolean checkAGuessTotalyCorrect(String userInput) {
 			boolean isswedishDicContains = false;
 			if(GameRunner.swedishVocabulary.containsValue(userInput)) {
 				isswedishDicContains = true;
@@ -88,17 +88,17 @@ public class GameRunner {
 
 				if(	userInput.substring(0).equalsIgnoreCase("q") | correctAns+wrongAns==9) {
 					// I've added +1 bc list of size 9 and total questions are 10
-					System.out.print("Du svarade på total "+  (wrongAns+correctAns+1) + " glosor "+gamer.getName() +" och hade " + correctAns +" rätt välkomen åter" );
+					System.out.print("Du svarade pÃ¥ total "+  (wrongAns+correctAns+1) + " glosor "+gamer.getName() +" och hade " + correctAns +" rÃ¤tt vÃ¤lkomen Ã¥ter" );
 					break stop;
 				}
 				else if(this.checkAGuessTotalyCorrect(userInput)) {
 					++correctAns;
-					System.out.print("Korrekt! " + correctAns   + " rätt " +" av " + (correctAns+ wrongAns) +" ord\n" );
+					System.out.print("Korrekt! " + correctAns   + " rÃ¤tt " +" av " + (correctAns+ wrongAns) +" ord\n" );
 
 				}
 
 				else if(this.checkAGuessTotalyCorrect(userInput)==false){
-					System.out.println("Nästan rätt. Korrekt svar är "+ listOfValues.get(correctAns+wrongAns)+".");
+					System.out.println("NÃ¤stan rÃ¤tt. Korrekt svar Ã¤r "+ listOfValues.get(correctAns+wrongAns)+".");
 					++wrongAns;		
 				}		
 			}
